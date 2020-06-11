@@ -77,7 +77,7 @@
                   class="avatar-uploader"
                   :action="$http.defaults.baseURL + '/upload'"
                   :show-file-list="false"
-                  :on-success="res => item.icon = res.url"
+                  :on-success="res => $set(item, 'icon', res.url)"
                 >
                   <img v-if="item.icon" :src="item.icon" class="avatar" />
                   <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -113,12 +113,7 @@ export default {
         scores: {
           difficult: 0
         },
-        skills: {
-          name: "",
-          icon: "",
-          description: "",
-          tips: ""
-        }
+        skills: []
       },
       // parents: []
       categories: [],
@@ -172,27 +167,4 @@ export default {
 </script>
 
 <style>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-}
-.avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
-}
 </style>
