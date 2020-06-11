@@ -19,11 +19,11 @@
 export default {
   data() {
     return {
-      model: {}
+      model: {},
     };
   },
   props: {
-    id: {}
+    id: {},
   },
   methods: {
     async save() {
@@ -35,16 +35,16 @@ export default {
       this.$router.push("/admin_users/list");
       this.$message({
         type: "success",
-        message: "保存成功"
+        message: "保存成功",
       });
     },
     async fetch() {
       const res = await this.$http.get(`rest/admin_users/${this.id}`);
       this.model = res.data;
-    }
+    },
   },
   created() {
     this.id && this.fetch();
-  }
+  },
 };
 </script>

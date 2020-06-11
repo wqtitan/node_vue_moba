@@ -4,12 +4,7 @@
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="所属分类">
         <el-select v-model="model.categories" multiple>
-          <el-option
-            v-for="item in categories"
-            :key="item._id"
-            :label="item.name"
-            :value="item._id"
-          ></el-option>
+          <el-option v-for="item in categories" :key="item._id" :label="item.name" :value="item._id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="标题">
@@ -32,14 +27,14 @@ export default {
   data() {
     return {
       model: {},
-      categories: []
+      categories: [],
     };
   },
   props: {
-    id: {}
+    id: {},
   },
   components: {
-    VueEditor
+    VueEditor,
   },
   methods: {
     async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
@@ -59,7 +54,7 @@ export default {
       this.$router.push("/articles/list");
       this.$message({
         type: "success",
-        message: "保存成功"
+        message: "保存成功",
       });
     },
     async fetch() {
@@ -69,11 +64,11 @@ export default {
     async fetchCategories() {
       const res = await this.$http.get(`rest/categories`);
       this.categories = res.data;
-    }
+    },
   },
   created() {
     this.fetchCategories();
     this.id && this.fetch();
-  }
+  },
 };
 </script>

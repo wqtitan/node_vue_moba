@@ -23,12 +23,7 @@
           </el-form-item>
           <el-form-item label="类型">
             <el-select v-model="model.categories" multiple>
-              <el-option
-                v-for="item of categories"
-                :key="item._id"
-                :label="item.name"
-                :value="item._id"
-              ></el-option>
+              <el-option v-for="item of categories" :key="item._id" :label="item.name" :value="item._id"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="难度">
@@ -64,9 +59,7 @@
           </el-form-item>
         </el-tab-pane>
         <el-tab-pane label="技能" name="skills">
-          <el-button size="small" @click="model.skills.push({})">
-            <i class="el-icon-plus"></i> 添加技能
-          </el-button>
+          <el-button size="small" @click="model.skills.push({})"> <i class="el-icon-plus"></i> 添加技能 </el-button>
           <el-row type="flex" style="flex-wrap: wrap">
             <el-col :md="12" v-for="(item, i) in model.skills" :key="i">
               <el-form-item label="名称">
@@ -77,7 +70,7 @@
                   class="avatar-uploader"
                   :action="$http.defaults.baseURL + '/upload'"
                   :show-file-list="false"
-                  :on-success="res => $set(item, 'icon', res.url)"
+                  :on-success="(res) => $set(item, 'icon', res.url)"
                 >
                   <img v-if="item.icon" :src="item.icon" class="avatar" />
                   <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -111,17 +104,17 @@ export default {
         name: "",
         avatar: "",
         scores: {
-          difficult: 0
+          difficult: 0,
         },
-        skills: []
+        skills: [],
       },
       // parents: []
       categories: [],
-      items: []
+      items: [],
     };
   },
   props: {
-    id: {}
+    id: {},
   },
   methods: {
     async save() {
@@ -133,7 +126,7 @@ export default {
       this.$router.push("/heroes/list");
       this.$message({
         type: "success",
-        message: "保存成功"
+        message: "保存成功",
       });
     },
     async fetch() {
@@ -155,16 +148,15 @@ export default {
     afterUpload(res) {
       // this.$set(this.model, "avatar", res.url);
       this.model.avatar = res.url;
-    }
+    },
   },
   created() {
     this.fetchCategories();
     this.fetchItems();
     // this.fetchParents();
     this.id && this.fetch();
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

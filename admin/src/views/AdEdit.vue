@@ -6,9 +6,7 @@
         <el-input v-model="model.name"></el-input>
       </el-form-item>
       <el-form-item label="广告">
-        <el-button size="small" @click="model.items.push({})">
-          <i class="el-icon-plus"></i> 添加广告
-        </el-button>
+        <el-button size="small" @click="model.items.push({})"> <i class="el-icon-plus"></i> 添加广告 </el-button>
         <el-row type="flex" style="flex-wrap: wrap">
           <el-col :md="24" v-for="(item, i) in model.items" :key="i">
             <el-form-item label="跳转链接(URL)">
@@ -19,7 +17,7 @@
                 class="avatar-uploader"
                 :action="$http.defaults.baseURL + '/upload'"
                 :show-file-list="false"
-                :on-success="res => $set(item, 'image', res.url)"
+                :on-success="(res) => $set(item, 'image', res.url)"
               >
                 <img v-if="item.image" :src="item.image" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -44,12 +42,12 @@ export default {
   data() {
     return {
       model: {
-        items: []
-      }
+        items: [],
+      },
     };
   },
   props: {
-    id: {}
+    id: {},
   },
   methods: {
     async save() {
@@ -61,16 +59,16 @@ export default {
       this.$router.push("/ads/list");
       this.$message({
         type: "success",
-        message: "保存成功"
+        message: "保存成功",
       });
     },
     async fetch() {
       const res = await this.$http.get(`rest/ads/${this.id}`);
       this.model = Object.assign({}, this.model, res.data);
-    }
+    },
   },
   created() {
     this.id && this.fetch();
-  }
+  },
 };
 </script>

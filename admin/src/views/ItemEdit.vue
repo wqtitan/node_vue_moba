@@ -33,12 +33,12 @@
 export default {
   data() {
     return {
-      model: {}
+      model: {},
       // parents: []
     };
   },
   props: {
-    id: {}
+    id: {},
   },
   methods: {
     async save() {
@@ -50,7 +50,7 @@ export default {
       this.$router.push("/items/list");
       this.$message({
         type: "success",
-        message: "保存成功"
+        message: "保存成功",
       });
     },
     async fetch() {
@@ -63,14 +63,13 @@ export default {
     // },
     afterUpload(res) {
       this.$set(this.model, "icon", res.url);
-    }
+    },
   },
   created() {
     // this.fetchParents();
     this.id && this.fetch();
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
