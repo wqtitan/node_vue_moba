@@ -25,8 +25,14 @@ export default {
     };
   },
   methods: {
-    login() {
-      console.log(this.model);
+    async login() {
+      const res = await this.$http.post("login", this.model);
+      localStorage.token = res.data.token; // sessionStorage  关掉浏览器就失效了
+      this.$router.push("/");
+      this.$message({
+        type: "success",
+        message: "登录成功",
+      });
     },
   },
 };
