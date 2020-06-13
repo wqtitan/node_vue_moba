@@ -11,7 +11,6 @@ http.interceptors.request.use(
     if (localStorage.token) {
       config.headers.Authorization = "Bearer " + localStorage.token;
     }
-
     return config;
   },
   function(error) {
