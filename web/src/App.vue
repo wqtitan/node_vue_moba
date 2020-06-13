@@ -1,13 +1,8 @@
 <template>
   <div id="app">
-    <p>111</p>
+    <div id="nav"></div>
+    <router-view />
   </div>
 </template>
 
-<script>
-export default {
-  name: "App"
-};
-</script>
-
-<style></style>
+<style lang="scss"></style>
