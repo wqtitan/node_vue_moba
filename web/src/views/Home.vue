@@ -43,37 +43,16 @@
       </div>
     </div>
     <!-- end of nav icons -->
-    <m-card icon="menu" title="新闻资讯">
-      <div class="nav jc-between">
-        <div class="nav-item active">
-          <div class="nav-link">热门</div>
+    <m-list-card icon="menu" title="新闻资讯" :categories="newsCategories">
+      <template #items="{category}">
+        <div class="py-2" v-for="(news, i) in category.newsList" :key="i">
+          <span>[{{ news.categoryName }}]</span>
+          <span>|</span>
+          <span>{{ news.title }}</span>
+          <span>{{ news.data }}</span>
         </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-      </div>
-      <div class="pt-3">
-        <swiper>
-          <swiper-slide v-for="m in 5" :key="m">
-            <div class="py-2" v-for="n in 5" :key="n">
-              <span>[新闻]</span>
-              <span>|</span>
-              <span>文章标题文章标题文章标题文章标题</span>
-              <span>06/14</span>
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
-    </m-card>
+      </template>
+    </m-list-card>
 
     <m-card icon="card-hero" title="英雄列表"></m-card>
     <m-card icon="menu" title="精彩视频"></m-card>
@@ -91,7 +70,49 @@ export default {
           el: ".pagination-home"
         }
         // Some Swiper option/callback...
-      }
+      },
+      newsCategories: [
+        {
+          name: "热门",
+          newsList: new Array(5).fill(1).map(() => ({
+            categoryName: "热门",
+            title: "热门内容",
+            data: "06/14"
+          }))
+        },
+        {
+          name: "新闻",
+          newsList: new Array(5).fill(1).map(() => ({
+            categoryName: "新闻",
+            title: "新闻内容",
+            data: "06/14"
+          }))
+        },
+        {
+          name: "公告",
+          newsList: new Array(5).fill(1).map(() => ({
+            categoryName: "公告",
+            title: "公告内容",
+            data: "06/14"
+          }))
+        },
+        {
+          name: "活动",
+          newsList: new Array(5).fill(1).map(() => ({
+            categoryName: "活动",
+            title: "活动内容",
+            data: "06/14"
+          }))
+        },
+        {
+          name: "赛事",
+          newsList: new Array(5).fill(1).map(() => ({
+            categoryName: "赛事",
+            title: "赛事内容",
+            data: "06/14"
+          }))
+        }
+      ]
     };
   },
   components: {}
