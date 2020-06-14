@@ -41,6 +41,13 @@ a {
     font-size: $size * $base-font-size;
   }
 }
+// text overflow
+.text-ellipse {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 // width, height
 .w-100 {

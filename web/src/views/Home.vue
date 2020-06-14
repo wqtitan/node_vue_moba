@@ -43,26 +43,38 @@
       </div>
     </div>
     <!-- end of nav icons -->
-    <m-list-card icon="menu" title="新闻资讯" :categories="newsCategories">
+    <m-list-card icon="menu" title="新闻资讯" :categories="newsCats">
       <template #items="{category}">
-        <div class="py-2" v-for="(news, i) in category.newsList" :key="i">
-          <span>[{{ news.categoryName }}]</span>
-          <span>|</span>
-          <span>{{ news.title }}</span>
-          <span>{{ news.data }}</span>
+        <div
+          class="py-2 fs-lg d-flex"
+          v-for="(news, i) in category.newsList"
+          :key="i"
+        >
+          <span class="text-info">[{{ news.categoryName }}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-dark-1 text-ellipse pr-2">
+            {{ news.title }}
+          </span>
+          <span class="text-grey-1 fs-sm">{{ news.createdAt | date }}</span>
         </div>
       </template>
     </m-list-card>
 
     <m-card icon="card-hero" title="英雄列表"></m-card>
     <m-card icon="menu" title="精彩视频"></m-card>
-    <m-card icon="menu" title="图文功率"></m-card>
+    <m-card icon="menu" title="图文攻略"></m-card>
   </div>
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
   name: "Home",
+  filters: {
+    date(val) {
+      return dayjs(val).format("MM/DD");
+    }
+  },
   data() {
     return {
       swiperOptions: {
@@ -71,51 +83,19 @@ export default {
         }
         // Some Swiper option/callback...
       },
-      newsCategories: [
-        {
-          name: "热门",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "热门",
-            title: "热门内容",
-            data: "06/14"
-          }))
-        },
-        {
-          name: "新闻",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "新闻",
-            title: "新闻内容",
-            data: "06/14"
-          }))
-        },
-        {
-          name: "公告",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "公告",
-            title: "公告内容",
-            data: "06/14"
-          }))
-        },
-        {
-          name: "活动",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "活动",
-            title: "活动内容",
-            data: "06/14"
-          }))
-        },
-        {
-          name: "赛事",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "赛事",
-            title: "赛事内容",
-            data: "06/14"
-          }))
-        }
-      ]
+      newsCats: []
     };
   },
-  components: {}
+  components: {},
+  methods: {
+    async fetchNewsCats() {
+      const res = await this.$http.get("news/list");
+      this.newsCats = res.data;
+    }
+  },
+  created() {
+    this.fetchNewsCats();
+  }
 };
 </script>
 
