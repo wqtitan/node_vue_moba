@@ -59,6 +59,10 @@ a {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 @each $key, $value in $flex-jc {
   .jc-#{$key} {
     justify-content: $value;
@@ -121,5 +125,23 @@ a {
     &.active {
       border-bottom: 3px solid #fff;
     }
+  }
+}
+
+// sprite
+.sprite {
+  background: url(../index.png) no-repeat 0 0;
+  background-size: 28.8462rem;
+  display: inline-block;
+  &.sprite-news {
+    width: 1.7692rem;
+    height: 1.6154rem;
+    background-position: -17.2308rem -5.1538rem;
+  }
+
+  &.sprite-arrow {
+    width: 0.7692rem;
+    height: 0.7692rem;
+    background-position: -10.8462rem -17.8462rem;
   }
 }

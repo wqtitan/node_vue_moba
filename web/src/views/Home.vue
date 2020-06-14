@@ -27,6 +27,21 @@
         slot="pagination"
       ></div>
     </swiper>
+    <!-- end of swiper -->
+    <div class="nav-icons bg-white mt-3 text-center pt-3 text-dark-1">
+      <div class="d-flex flex-wrap">
+        <div class="nav-item mb-3" v-for="n in 10" :key="n">
+          <div class="sprite-news-border">
+            <i class="sprite sprite-news"></i>
+          </div>
+          <div class="py-1 name-news-border">爆料站</div>
+        </div>
+      </div>
+      <div class="bg-light py-2 fs-sm">
+        <i class="sprite sprite-arrow mr-1"></i>
+        <span>收起</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,6 +71,24 @@ export default {
     background: map-get($map: $colors, $key: "white");
     &.swiper-pagination-bullet-active {
       background: map-get($map: $colors, $key: "info");
+    }
+  }
+}
+
+.nav-icons {
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+
+  .nav-item {
+    width: 25%;
+    .sprite-news-border {
+      border-right: 1px solid $border-color;
+    }
+    .name-news-border {
+      border-right: 1px solid $border-color;
+    }
+    &:nth-child(4n) div {
+      border-right: none;
     }
   }
 }
