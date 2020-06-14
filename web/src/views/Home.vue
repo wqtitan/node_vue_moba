@@ -42,6 +42,42 @@
         <span>收起</span>
       </div>
     </div>
+    <!-- end of nav icons -->
+    <m-card icon="menu" title="新闻资讯">
+      <div class="nav jc-between">
+        <div class="nav-item active">
+          <div class="nav-link">热门</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+      </div>
+      <div class="pt-3">
+        <swiper>
+          <swiper-slide v-for="m in 5" :key="m">
+            <div class="py-2" v-for="n in 5" :key="n">
+              <span>[新闻]</span>
+              <span>|</span>
+              <span>文章标题文章标题文章标题文章标题</span>
+              <span>06/14</span>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </m-card>
+
+    <m-card icon="card-hero" title="英雄列表"></m-card>
+    <m-card icon="menu" title="精彩视频"></m-card>
+    <m-card icon="menu" title="图文功率"></m-card>
   </div>
 </template>
 

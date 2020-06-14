@@ -8,8 +8,8 @@
       </div>
       <button type="button" class="btn bg-primary fs-xxxs">立即下载</button>
     </div>
-    <div class="nav bg-primary pt-2 pb-2">
-      <div class="nav d-flex text-white jc-around">
+    <div class="bg-primary pt-2 pb-2">
+      <div class="nav nav-inverse pb-1 jc-around">
         <div class="nav-item active">
           <router-link class="nav-link" tag="div" to="/">首页</router-link>
         </div>

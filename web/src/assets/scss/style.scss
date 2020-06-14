@@ -118,12 +118,23 @@ a {
   border-radius: 0.1538rem;
   padding: 0.2rem 0.6rem;
 }
+
 .nav {
+  display: flex;
   .nav-item {
     border-bottom: 3px solid transparent;
     padding-bottom: 0.2rem;
     &.active {
-      border-bottom: 3px solid #fff;
+      color: map-get($map: $colors, $key: "primary");
+      border-bottom-color: map-get($map: $colors, $key: "primary");
+    }
+  }
+  &.nav-inverse {
+    .nav-item {
+      color: map-get($map: $colors, $key: "white");
+      &.active {
+        border-bottom-color: map-get($map: $colors, $key: "white");
+      }
     }
   }
 }
@@ -143,5 +154,11 @@ a {
     width: 0.7692rem;
     height: 0.7692rem;
     background-position: -10.8462rem -17.8462rem;
+  }
+
+  &.sprite-menu {
+    width: 1.3846rem;
+    height: 0.2308rem;
+    background-position: -13.0769rem -19.5385rem;
   }
 }
