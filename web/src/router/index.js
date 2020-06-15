@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Main from "../views/Main.vue";
 import Article from "../views/Article.vue";
+import Hero from "../views/Hero.vue";
 import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
@@ -23,6 +24,12 @@ const routes = [
         props: true
       }
     ]
+  },
+  {
+    path: "/heroes/:id",
+    name: "hero",
+    component: Hero,
+    props: true
   }
 ];
 
