@@ -20,6 +20,9 @@ body {
 a {
   color: #999;
 }
+p {
+  line-height: 1.5em;
+}
 
 @each $colorKey, $color in $colors {
   .text-#{$colorKey} {
@@ -167,5 +170,12 @@ a {
     width: 1.3846rem;
     height: 0.2308rem;
     background-position: -13.0769rem -19.5385rem;
+  }
+}
+
+// borders
+@each $dir in (top, right, bottom, left) {
+  .border-#{$dir} {
+    border-#{$dir}: 1px solid $border-color;
   }
 }
