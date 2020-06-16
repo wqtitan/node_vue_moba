@@ -127,6 +127,22 @@ p {
   border: none;
   border-radius: 0.1538rem;
   padding: 0.2rem 0.6rem;
+
+  &.btn-lg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: map-get($map: $colors, $key: "white-1");
+    border: 1px solid map-get($map: $colors, $key: "white-2");
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    i {
+      color: map-get($map: $colors, $key: "primary");
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 .nav {
