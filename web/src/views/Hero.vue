@@ -36,15 +36,23 @@
     <div>
       <div class="px-3 bg-white">
         <div class="nav d-flex jc-around pt-3 pb-2 border-bottom">
-          <div class="nav-item active">
+          <div
+            class="nav-item"
+            :class="{ active: active === 0 }"
+            @click="$refs.list.$swiper.slideTo(0)"
+          >
             <div class="nav-link">英雄初识</div>
           </div>
-          <div class="nav-item">
+          <div
+            class="nav-item"
+            :class="{ active: active === 1 }"
+            @click="$refs.list.$swiper.slideTo(1)"
+          >
             <div class="nav-link">进阶攻略</div>
           </div>
         </div>
       </div>
-      <swiper>
+      <swiper @slide-change="slideChange" ref="list" :options="swiperOptions">
         <swiper-slide>
           <div>
             <div class="p-3 bg-white border-bottom">
@@ -136,18 +144,31 @@ export default {
   data() {
     return {
       model: null,
-      currentSkillIndex: 0
+      currentSkillIndex: 0,
+      active: 0,
+      swiperOptions: {
+        pagination: {
+          el: ".swiper-pagination"
+        }
+        // Some Swiper option/callback...
+      }
     };
   },
   computed: {
     currentSkill() {
       return this.model.skills[this.currentSkillIndex];
+    },
+    swiper() {
+      return this.$refs.list.$swiper;
     }
   },
   methods: {
     async fetch() {
       const res = await this.$http.get(`heroes/${this.id}`);
       this.model = res.data;
+    },
+    slideChange() {
+      return (this.active = this.$refs.list.$swiper.realIndex);
     }
   },
   created() {
